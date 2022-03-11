@@ -9,5 +9,5 @@ class paciente extends Model
 {
     protected $primaryKey = 'id';
     public $timestamps = false;
-    protected $fillable = array('nombre', 'correo', 'contraseña', 'usuario');
+    protected $fillable = array('nombre', 'direccion', 'telefono', 'edad');
 }
