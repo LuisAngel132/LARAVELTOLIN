@@ -19,8 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 //---------------------- PACIENTES --------------------------------------------------
-Route::GET('/paciente/traer', [pacientes::class, 'SHOW1', function(Request $request){}]);
+Route::GET('/paciente/traer/{id}', [pacientes::class, 'SHOW1', function(Request $request){}]);
 Route::GET('/paciente/traert', [pacientes::class, 'SHOW', function(){}]);
 Route::POST('/paciente/insertar', [pacientes::class, 'POST', function(Request $request){}]);
-Route::DELETE('/paciente/eliminar', [pacientes::class, 'BORRAR', function(Request $request){}]);
-Route::PUT('/paciente/actualizar', [pacientes::class, 'EDITAR', function(Request $request){}]);
+Route::DELETE('/paciente/eliminar/{id}', [pacientes::class, 'BORRAR', function(Request $request){}]);
+Route::PUT('/paciente/actualizar/{id}', [pacientes::class, 'EDITAR', function(Request $request){}]);

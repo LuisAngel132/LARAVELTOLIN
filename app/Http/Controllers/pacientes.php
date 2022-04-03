@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 class pacientes extends Controller
 {
-    public function SHOW1(Request $id)
+    public function SHOW1($id)
     {
         $paciente = paciente::find($id);
         if(!is_null($paciente))
@@ -34,10 +34,10 @@ class pacientes extends Controller
         return 'Se ha registrado al paciente correctamente';
     }
 
-    public function BORRAR(Request $id){
-        $eliminar = paciente::findOrFail($id);
+    public function BORRAR( $id){
+        $eliminar = paciente::find($id);
         if(!is_null($eliminar)){
-            $eliminar->each->delete();
+            $eliminar->delete();
             return response('Se ha eliminado el paciente correctamente', 200);
         }
         else
@@ -45,15 +45,15 @@ class pacientes extends Controller
         return response ('No se encontró ningun paciente para eliminar', 402);
         }
     }
-     
-    public function EDITAR (Request $request){
-        $paciente = paciente::find($request->id);
+
+    public function EDITAR (Request $request,$id){
+        $paciente = paciente::find($id);
         if(!is_null($paciente)){
-            $maestro->nombre = $request->nombre;
-            $maestro->correo = $request->correo;
-            $maestro->contraseña = $request->contraseña;
-            $maestro->usuario = $request->usuario;
-            $maestro->save();
+            $paciente->nombre = $request->nombre;
+            $paciente->direccion = $request->direccion;
+            $paciente->telefono = $request->telefono;
+            $paciente->edad = $request->edad;
+            $paciente->save();
             return response ('El paciente se ha modificado correctamente', 200);
         }
         else{
